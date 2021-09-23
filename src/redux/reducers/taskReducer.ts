@@ -62,7 +62,8 @@ export const taskReducer = (state = initialState, action: TaskActionType) => {
         ...targetTask,
         todos: removeItem(targetTask.todos, targetTodoIndex),
       };
-
+      sortTodos.length = 0;
+      sortTodos.concat(targetTask.todos);
       return {
         ...state,
         tasks: overrideItem(state.tasks, updatedTask, targetTaskIndex),
@@ -71,6 +72,7 @@ export const taskReducer = (state = initialState, action: TaskActionType) => {
     case GET_TASKS: {
       const { key } = action.payload;
       const targetTaskIndex = state.tasks.findIndex((x) => x.key === key);
+      alert("getTask");
       if (targetTaskIndex !== -1) {
         const targetTask = state.tasks[targetTaskIndex];
         sortTodos.length = 0;
@@ -90,12 +92,13 @@ export const taskReducer = (state = initialState, action: TaskActionType) => {
           ...targetTask,
           todos: [...targetTask.todos, newTask],
         };
+        sortTodos.length = 0;
+        sortTodos.concat(targetTask.todos);
         return {
           ...state,
           tasks: overrideItem(state.tasks, updatedTask, targetTaskIndex),
         };
       }
-      console.log(state);
       return {...state,tasks: state.tasks};
     }
     case DONE_TASK: {
@@ -104,18 +107,21 @@ export const taskReducer = (state = initialState, action: TaskActionType) => {
       const targetTask = state.tasks[targetTaskIndex];
       const targetTodoIndex = targetTask.todos.findIndex((x) => x.id === id);
       const targetTodo = targetTask.todos[targetTodoIndex];
-      let done = false;
-      if (targetTodo.complete) {
-        done = true;
+      let complete = false;
+      if (!targetTodo.complete) {
+        complete = true;
       }
       const updateTodo = {
         ...targetTodo,
-        done,
+        complete,
       };
+      console.log(updateTodo);
       const updatedTask = {
         ...targetTask,
         todos: overrideItem(targetTask.todos, updateTodo, targetTodoIndex),
       };
+      sortTodos.length = 0;
+      sortTodos.concat(targetTask.todos);
       return {
         ...state,
         tasks: overrideItem(state.tasks, updatedTask, targetTaskIndex),

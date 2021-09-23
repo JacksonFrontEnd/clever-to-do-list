@@ -1,4 +1,4 @@
-import { useActions } from "../../../hooks/useAction";
+import { useMySelector } from "../../../hooks/useMySelector";
 import { sortTodos } from "../../../utils/const";
 import { ToDoForm } from "../ToDoForm";
 import { ToDo } from "../ToDoHandler";
@@ -8,9 +8,9 @@ export const Task = (props: { selectedDate: string }) => {
   const { selectedDate } = props;
   const { addTask, removeTask, handleToggle, updateTask } =
     useTodos(selectedDate);
-  const action = useActions();
-  action.getTasks({key: selectedDate});
-  alert(sortTodos);
+  const { tasks } = useMySelector(store=> store.taskReducer);
+  const targetTaskIndex = tasks.findIndex((x) => x.key === selectedDate);
+  const targetTask = tasks[targetTaskIndex];
   return (
     <div className="App">
       <header>
@@ -22,7 +22,7 @@ export const Task = (props: { selectedDate: string }) => {
       </header>
       <ToDoForm edit={false} onSubmit={addTask} />
       {
-      sortTodos.map((elem) => {
+      targetTaskIndex !== -1 ? targetTask.todos.map((elem) => {
         return (
           <ToDo
             todo={elem}
@@ -32,7 +32,7 @@ export const Task = (props: { selectedDate: string }) => {
             updateTask={updateTask}
           />
         );
-      })
+      }) : null
       }
     </div>
   );

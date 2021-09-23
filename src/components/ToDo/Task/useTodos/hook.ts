@@ -1,10 +1,7 @@
-import { useState } from "react";
 import { useActions } from "../../../../hooks/useAction";
-import { IDArr, sortTodos } from "../../../../utils/const";
-import { ITaskState } from "../../../../utils/Interfaces";
+import { IDArr } from "../../../../utils/const";
 
 export const useTodos = (selectedDate: string) => {
-  const [todos, setTodos] = useState<ITaskState[]>([]);
   const actions = useActions();
   const addTask = (userInput: string) => {
     if (userInput) {
@@ -28,7 +25,6 @@ export const useTodos = (selectedDate: string) => {
     actions.updateTask({ key: selectedDate, id: id, task: task});
   };
   return {
-    todos,
     addTask,
     removeTask,
     handleToggle,
