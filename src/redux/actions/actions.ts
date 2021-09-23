@@ -2,7 +2,6 @@ import {
   IAddTask,
   IDeleteTask,
   IDoneTask,
-  IGetTask,
   IUpdateTask,
 } from "../../utils/Interfaces";
 import {
@@ -11,7 +10,6 @@ import {
   UPDATE_TASK,
   DELETE_TASK,
   ADD_TASK,
-  GET_TASKS,
   DONE_TASK,
 } from "./actionTypes";
 
@@ -45,13 +43,6 @@ function addTask(obj: IAddTask) {
     payload: obj,
   };
 }
-
-function getTasks(obj:IGetTask) {
-  return {
-    type: GET_TASKS,
-    payload: obj,
-  };
-}
 function doneTask(obj: IDoneTask) {
   return {
     type: DONE_TASK,
@@ -64,6 +55,5 @@ export {
   updateTask,
   deleteTask,
   addTask,
-  getTasks,
   doneTask,
 };

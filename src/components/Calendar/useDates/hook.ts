@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import moment from 'moment';
-import { stars } from "../../../utils/const";
 
 export const useDates = () => {
 	const [dates, setDates] = useState<moment.Moment[]>([]);
@@ -23,12 +22,8 @@ export const useDates = () => {
     setStartDate(startDate.clone().add(7, 'days'));
     setSelectedDate(selectedDate.clone().add(7, 'days'));
   }
-  const getStars = (date:moment.Moment) =>{
-    return date.isSame(selectedDate, "day") ? stars.join("") : ""
-  }
 	return {
 		dates,
-    getStars,
 		prevWeek,
 		nextWeek,
 		selectedDate,

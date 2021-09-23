@@ -3,7 +3,6 @@ const SET_AUTH_FALSE = 'SET_AUTH_FALSE';
 const UPDATE_TASK = 'UPDATE_TASK';
 const DELETE_TASK = 'DELETE_TASK';
 const ADD_TASK = 'ADD_TASK';
-const GET_TASKS = 'GET_TASKS';
 const DONE_TASK = 'DONE_TASK';
 export {
   SET_AUTH_TRUE,
@@ -11,6 +10,5 @@ export {
   UPDATE_TASK,
   DELETE_TASK,
   ADD_TASK,
-  GET_TASKS,
   DONE_TASK,
 };

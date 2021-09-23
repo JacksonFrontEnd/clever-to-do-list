@@ -1,10 +1,9 @@
-import { sortTodos, TaskActionType } from "../../utils/const";
 import { ITaskStore } from "../../utils/Interfaces";
+import { TaskActionType } from "../../utils/types";
 import {
   ADD_TASK,
   DELETE_TASK,
   DONE_TASK,
-  GET_TASKS,
   UPDATE_TASK,
 } from "../actions/actionTypes";
 
@@ -62,23 +61,10 @@ export const taskReducer = (state = initialState, action: TaskActionType) => {
         ...targetTask,
         todos: removeItem(targetTask.todos, targetTodoIndex),
       };
-      sortTodos.length = 0;
-      sortTodos.concat(targetTask.todos);
       return {
         ...state,
         tasks: overrideItem(state.tasks, updatedTask, targetTaskIndex),
       };
-    }
-    case GET_TASKS: {
-      const { key } = action.payload;
-      const targetTaskIndex = state.tasks.findIndex((x) => x.key === key);
-      alert("getTask");
-      if (targetTaskIndex !== -1) {
-        const targetTask = state.tasks[targetTaskIndex];
-        sortTodos.length = 0;
-        sortTodos.concat(targetTask.todos);
-      }
-      return state;
     }
     case ADD_TASK: {
       const { key, newTask } = action.payload;
@@ -92,8 +78,6 @@ export const taskReducer = (state = initialState, action: TaskActionType) => {
           ...targetTask,
           todos: [...targetTask.todos, newTask],
         };
-        sortTodos.length = 0;
-        sortTodos.concat(targetTask.todos);
         return {
           ...state,
           tasks: overrideItem(state.tasks, updatedTask, targetTaskIndex),
@@ -120,8 +104,6 @@ export const taskReducer = (state = initialState, action: TaskActionType) => {
         ...targetTask,
         todos: overrideItem(targetTask.todos, updateTodo, targetTodoIndex),
       };
-      sortTodos.length = 0;
-      sortTodos.concat(targetTask.todos);
       return {
         ...state,
         tasks: overrideItem(state.tasks, updatedTask, targetTaskIndex),

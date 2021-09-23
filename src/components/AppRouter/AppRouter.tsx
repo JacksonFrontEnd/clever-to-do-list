@@ -1,6 +1,6 @@
 import { Route, Switch, Redirect } from "react-router-dom";
 import { privateRoutes, publicRoutes } from "../../routes";
-import { CALENDAR_ROUTE, LOGIN_ROUTE } from "../../utils/const";
+import { CALENDAR_ROUTE, LOGIN_ROUTE } from "../../const/const";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useMySelector } from "../../hooks/useMySelector";
 

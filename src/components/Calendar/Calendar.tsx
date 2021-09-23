@@ -5,7 +5,7 @@ import { useDates } from "./useDates";
 import { useMySelector } from "../../hooks/useMySelector";
 
 export const CalendarStrip = () => {
-  const { dates, getStars, prevWeek, nextWeek, selectedDate, setSelectedDate } =
+  const { dates, prevWeek, nextWeek, selectedDate, setSelectedDate } =
     useDates();
   const { tasks } = useMySelector((store) => store.taskReducer);
   const targetTaskIndex = tasks.findIndex(

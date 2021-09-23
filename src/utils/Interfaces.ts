@@ -17,9 +17,6 @@ export interface IDoneTask {
   id: number;
   key: string;
 }
-export interface IGetTask {
-  key: string;
-}
 export interface IDeleteTask {
   key: string;
   id: number;
