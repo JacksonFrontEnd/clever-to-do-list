@@ -1,8 +1,8 @@
-import { TaskType } from "../../../utils/types";
+import { TaskType } from '../../../utils/types';
 
 export type TaskPropType = {
   todo: TaskType;
-  toggleTask: Function;
-  removeTask: Function;
-	updateTask:Function;
+  toggleTask: (id:number)=>void;
+  removeTask: (id:number)=>void;
+updateTask: (id:number, value:string)=>void;
 };

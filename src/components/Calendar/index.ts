@@ -1,1 +1,1 @@
-export { CalendarStrip } from './Calendar'
+export { CalendarStrip } from './Calendar';

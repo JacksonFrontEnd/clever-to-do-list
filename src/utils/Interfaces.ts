@@ -1,7 +1,7 @@
 export interface ITaskState {
   id: number;
   task: string;
-	complete:boolean;
+complete:boolean;
   dateTask: string;
 }
 export interface ITaskStore {

@@ -1,11 +1,13 @@
-import { Box, Button, Container, Grid } from "@material-ui/core";
-import React from "react";
-import firebase from "firebase/compat/app";
-import { useMySelector } from "../../hooks/useMySelector";
+import {
+  Box, Button, Container, Grid,
+} from '@material-ui/core';
+import React from 'react';
+import firebase from 'firebase/compat/app';
+import { useMySelector } from '../../hooks/useMySelector';
 
-export const Login = () => {
-  const { auth } = useMySelector(store => store.authFirebase);;
-  const login = async () => {
+export const Login = ():JSX.Element => {
+  const { auth } = useMySelector((store) => store.authFirebase);
+  const login = async ():Promise<void> => {
     const provider = new firebase.auth.GoogleAuthProvider();
     await auth.signInWithPopup(provider);
   };
@@ -14,18 +16,18 @@ export const Login = () => {
       <Grid
         style={{ height: window.innerHeight - 64 }}
         container
-        alignItems={"center"}
+        alignItems="center"
         direction="column"
-        justifyContent={"center"}
+        justifyContent="center"
       >
         <Grid
-          style={{ width: 400, background: "lightgray" }}
+          style={{ width: 400, background: 'lightgray' }}
           container
-          alignItems={"center"}
+          alignItems="center"
           direction="column"
         >
           <Box p={5}>
-            <Button onClick={login} variant={"outlined"}>
+            <Button onClick={login} variant="outlined">
               Войти с помощью Google
             </Button>
           </Box>

@@ -1,25 +1,29 @@
-import { TaskPropType } from "./types";
-import SettingsIcon from "@material-ui/icons/Settings";
-import "./ToDo.scss";
-import { useState } from "react";
-import { ToDoForm } from "../ToDoForm";
-import { ITaskState } from "../../../utils/Interfaces";
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import React, { useState } from 'react';
+import SettingsIcon from '@material-ui/icons/Settings';
+import { TaskPropType } from './types';
+import './ToDo.scss';
+import { ToDoForm } from '../ToDoForm';
+import { ITaskState } from '../../../utils/Interfaces';
 
-export const ToDo = (props: TaskPropType) => {
+export const ToDo = (props: TaskPropType): JSX.Element => {
   const [edit, setEdit] = useState<ITaskState>({
     id: -1,
-    task: "",
+    task: '',
     complete: false,
-    dateTask: "",
+    dateTask: '',
   });
-  const { todo, toggleTask, removeTask, updateTask } = props;
-  const submitUpdate = (value: string) => {
+  const {
+    todo, toggleTask, removeTask, updateTask,
+  } = props;
+  const submitUpdate = (value: string):void => {
     updateTask(edit?.id, value);
     setEdit({
       id: -1,
-      task: "",
+      task: '',
       complete: false,
-      dateTask: "",
+      dateTask: '',
     });
   };
 
@@ -29,8 +33,10 @@ export const ToDo = (props: TaskPropType) => {
         <div key={todo.id} className="item-todo flex">
           <div className="flex-row">
             <div
-              className={todo.complete ? "item-text strike" : "item-text"}
-            >{`Task title: ${todo.task}`}</div>
+              className={todo.complete ? 'item-text strike' : 'item-text'}
+            >
+              {`Task title: ${todo.task}`}
+            </div>
             <div>{`Date of create: ${todo.dateTask}`}</div>
           </div>
           <div className="flex-row">
@@ -41,18 +47,16 @@ export const ToDo = (props: TaskPropType) => {
               <input type="checkbox" />
             </div>
             <SettingsIcon
-              onClick={() =>
-                setEdit({
-                  id: todo.id,
-                  task: todo.task,
-                  complete: todo.complete,
-                  dateTask: todo.dateTask,
-                })
-              }
+              onClick={() => setEdit({
+                id: todo.id,
+                task: todo.task,
+                complete: todo.complete,
+                dateTask: todo.dateTask,
+              })}
             />
           </div>
         </div>
-        <ToDoForm edit={true} onSubmit={submitUpdate} />
+        <ToDoForm edit onSubmit={submitUpdate} />
       </>
     );
   }
@@ -60,8 +64,10 @@ export const ToDo = (props: TaskPropType) => {
     <div key={todo.id} className="item-todo flex">
       <div className="flex-row">
         <div
-          className={todo.complete ? "item-text strike" : "item-text"}
-        >{`Task title: ${todo.task}`}</div>
+          className={todo.complete ? 'item-text strike' : 'item-text'}
+        >
+          {`Task title: ${todo.task}`}
+        </div>
         <div>{`Date of create: ${todo.dateTask}`}</div>
       </div>
       <div className="flex-row">
@@ -72,14 +78,12 @@ export const ToDo = (props: TaskPropType) => {
           <input type="checkbox" />
         </div>
         <SettingsIcon
-          onClick={() =>
-            setEdit({
-              id: todo.id,
-              task: todo.task,
-              complete: todo.complete,
-              dateTask: todo.dateTask,
-            })
-          }
+          onClick={() => setEdit({
+            id: todo.id,
+            task: todo.task,
+            complete: todo.complete,
+            dateTask: todo.dateTask,
+          })}
         />
       </div>
     </div>

@@ -1,11 +1,15 @@
-import { SET_AUTH_TRUE, SET_AUTH_FALSE, UPDATE_TASK, DELETE_TASK, ADD_TASK, DONE_TASK } from "../redux/actions/actionTypes";
-import { IUpdateTask, IDeleteTask, IAddTask, IDoneTask } from "./Interfaces";
+import {
+  SET_AUTH_TRUE, SET_AUTH_FALSE, UPDATE_TASK, DELETE_TASK, ADD_TASK, DONE_TASK,
+} from '../redux/actions/actionTypes';
+import {
+  IUpdateTask, IDeleteTask, IAddTask, IDoneTask,
+} from './Interfaces';
 
-export type TaskType =   {
+export type TaskType = {
   id: number;
   dateTask: string;
   task:string,
-	complete:boolean
+complete:boolean
 };
 export type TaskNumberType = {
   date: string;

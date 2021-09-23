@@ -1,4 +1,4 @@
-export type ToDoFormType = { 
-	onSubmit: Function,
-	edit: boolean
+export type ToDoFormType = {
+onSubmit: (value: string) => void,
+edit: boolean
 }

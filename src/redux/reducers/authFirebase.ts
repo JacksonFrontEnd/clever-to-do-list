@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { auth, firestore, AppContext } from '../../firebase';
 import { AuthActionType } from '../../utils/types';
 import { SET_AUTH_TRUE, SET_AUTH_FALSE } from '../actions/actionTypes';

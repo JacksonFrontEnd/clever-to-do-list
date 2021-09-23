@@ -1,11 +1,12 @@
-import { ITaskStore } from "../../utils/Interfaces";
-import { TaskActionType } from "../../utils/types";
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import { ITaskStore } from '../../utils/Interfaces';
+import { TaskActionType } from '../../utils/types';
 import {
   ADD_TASK,
   DELETE_TASK,
   DONE_TASK,
   UPDATE_TASK,
-} from "../actions/actionTypes";
+} from '../actions/actionTypes';
 
 interface Istate {
   tasks: ITaskStore[];
@@ -13,7 +14,7 @@ interface Istate {
 const initialState: Istate = {
   tasks: [],
 };
-function overrideItem<T>(array: T[], newItem: T, targetIndex: number) {
+function overrideItem<T>(array: T[], newItem: T, targetIndex: number):T[] {
   return array.map((item, index) => {
     if (index !== targetIndex) {
       return item;
@@ -23,7 +24,7 @@ function overrideItem<T>(array: T[], newItem: T, targetIndex: number) {
   });
 }
 
-function removeItem<T>(array: T[], index: number) {
+function removeItem<T>(array: T[], index: number):T[] {
   return [...array.slice(0, index), ...array.slice(index + 1)];
 }
 
@@ -70,7 +71,7 @@ export const taskReducer = (state = initialState, action: TaskActionType) => {
       const { key, newTask } = action.payload;
       const targetTaskIndex = state.tasks.findIndex((x) => x.key === key);
       if (targetTaskIndex === -1) {
-        state.tasks.push({key: newTask.dateTask, todos: [newTask]});
+        state.tasks.push({ key: newTask.dateTask, todos: [newTask] });
       } else {
         const targetTask = state.tasks[targetTaskIndex];
         console.log(state.tasks);
@@ -83,7 +84,7 @@ export const taskReducer = (state = initialState, action: TaskActionType) => {
           tasks: overrideItem(state.tasks, updatedTask, targetTaskIndex),
         };
       }
-      return {...state,tasks: state.tasks};
+      return { ...state, tasks: state.tasks };
     }
     case DONE_TASK: {
       const { id, key } = action.payload;
